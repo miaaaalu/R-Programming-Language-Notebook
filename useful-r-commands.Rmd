@@ -1,10 +1,13 @@
 ---
-title: "R Notebook"
+title: "Useful R commands for basic statistics and Notes"
 output:
-  pdf_document: default
-  html_notebook: default
-  word_document: default
+  html_document:
+    df_print: paged
 ---
+\fontfamily{cmr}
+\fontsize{12}{22}
+\fontseries{b}
+\selectfont
 
 ## R as a Calculator 
 
