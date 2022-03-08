@@ -1,8 +1,11 @@
 ---
-title: "R Programming Language Notebook"
-date: "8 March, 2022"
-output: html_document
+title: "R Notebook"
+output:
+  pdf_document: default
+  html_notebook: default
+  word_document: default
 ---
+
 ## R as a Calculator 
 
 ```{r}
@@ -28,20 +31,7 @@ sqrt(10) # Calculate Square Root
 pi # Calculate Square Root
 ```
 
-## R as a Calculator
-* Numeric
-  * Store floating point values
-
-* Boolean  (T or F)
-  * Values corresponding to True or False
-
-* Strings
-  * Sequences of characters
-
-* Type determined automatically when variable is created with " <-"operator
-
-
-## R as a Smart CalculatorCalculator 
+## R as a Smart Calculator 
 
 ```{r}
 # define variables
