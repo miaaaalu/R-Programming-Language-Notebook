@@ -15,6 +15,10 @@ output:
     highlight: tango
     code_folding: show
 ---
+\fontfamily{cmr}
+\fontsize{12}{22}
+\fontseries{b}
+\selectfont
 
 # statistics pratice
 ```{r}
