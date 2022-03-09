@@ -1,0 +1,113 @@
+---
+title: '**sample-pratice-age-and-sales**'
+date: "09/03/2022"
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: '4'
+  html_document:
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: no
+    toc_depth: 4
+    theme: yeti
+    highlight: tango
+    code_folding: show
+---
+
+# statistics pratice
+```{r}
+# create a variable 
+scores = c(75, 80, 85)
+
+# Do statistics
+scores * 2
+mean(scores)     # mean()
+median(scores)   # median()
+sd(scores)       # sd()
+```
+
+# Data Frame Pratice
+## Build a Data Frame 
+```{r}
+# Build a group of related vectors
+Names  =  c("Mike  Hussey",  "Aaron  Finch",  "Brad  Hogg",  "Steve  Smith",
+            "George  Bailey",  "Mitchell  Johnson",  "Shaun  Marsh",  
+            "Glenn  Maxwel l",  "Pat  Cummins",  "Mitchell  Starc",  "David  Warner")
+Ages = c(39,28,44,25,32,33,31,26,22,25,28)
+IPLSals = c(310,662,103,828,672,1340,455,1240,207,1030,1140)
+
+
+# Combine different vectors
+df = data.frame(Names, Ages,IPLSals)
+df
+```
+## Retrive rows/columns from dataframe
+```{r}
+df[1,]      # (row1,columns*)
+df[,1]      # (row*,column1)
+df[2:3]     # (column2,column3)
+df[2:3,]    # (row2,row3)
+```
+
+## Determine statistics
+```{r}
+mean(df[,2])
+mean(df[,"Ages"])
+mean(df$Ages)
+var(df[,2]) # run help("var") for explaination
+sd(df[,2])
+```
+
+##  Display Data 
+### Predict Age
+```{r}
+plot(df$Ages ~ df$IPLSals, main = "Cricket$")    #  Add a plot
+abline(lm(df$Ages ~ df$IPLSals), col = "red")    #  Adding a linear regression
+```
+```{r}
+fit = lm(df$Ages ~ df$IPLSals)  # lm() Function to Fit Linear Models
+fit
+```
+
+-----------------------------------------------------------
+NOTES
+Ages: as response variable
+IPLSales: as a predictor
+I.e. predict a player’s age from his IPL cricket salary
+So the regression equation is: **estimated age = -0.006372 x salary + 34.899143**
+-------------------------------------------------------------
+
+### Predict Salary 
+```{r}
+plot(df$IPLSals ~ df$Ages, main = "Cricket$")   # Plot it 
+abline(lm(df$IPLSals ~ df$Ages), col="red")
+```
+```{r}
+fit2 = lm(df$IPLSals ~ df$Ages)     # lm() Function to Fit Linear Models
+fit2
+```
+
+-----------------------------------------------------------
+NOTES
+IPLSales: as response variable
+Ages: as a predictor
+I.e. predict a player’s IPL cricket salary from his age. 
+So the regression equation is: **estimated salary = -27.18 x age + 1548.85**
+-------------------------------------------------------------
+
+## explore other plots
+```{r}
+sorted = sort(Ages)
+plot(sorted, IPLSals, xlab = "Ages", col = "green" )
+```
+```{r}
+plot(Ages, IPLSals, col = "blue" )
+points(sorted, IPLSals, col = "red" )                 # add points to a plot
+```
+
+### explore plot of whole dataframe 
+```{r}
+plot(df)
+```

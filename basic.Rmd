@@ -1,0 +1,370 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## R as a Calculator 
+
+```{r}
+1+1 # Simple Arithmetic
+```
+
+```{r}
+2+3*4 # Operator precedence
+```
+```{r}
+3^2 # Exponentiation
+```
+
+```{r}
+exp(1) # Exponential Function
+```
+
+```{r}
+sqrt(10) # Calculate Square Root
+```
+
+```{r}
+pi # Calculate Square Root
+```
+
+## R as a Calculator
+* Numeric
+  * Store floating point values
+
+* Boolean  (T or F)
+  * Values corresponding to True or False
+
+* Strings
+  * Sequences of characters
+
+* Type determined automatically when variable is created with " <-"operator
+
+
+## R as a Smart CalculatorCalculator 
+
+```{r}
+# define variables
+# using "<-" operator to set values
+x <-1 
+y <-3
+z <-4
+x * y * z
+```
+```{r}
+# variable names can include period
+This.Year <- 2004
+This.Year
+```
+
+## R Vectors
+
+### **`rep()` to repeat elements or patterns**
+```{r}
+rep(1,10) # repeats the number 1 ten times
+```
+
+### **`seq()` or m:n to generate sequences**
+```{r}
+seq(2,6) # sequence of integers between 2 and 6
+```
+```{r}
+seq(4,20,by=4) # skip 4 integer between 4 and 20
+```
+
+### **`c()` to combines multiple values into a vector or list.**
+```{r}
+# create vector with elements
+x <-c (2,0,0,4)
+y <-c (1,9,9,9)
+# sums elements
+x + y
+# multiplication
+x * 4
+# sqrt()
+sqrt(x)
+```
+
+### Indexing 
+```{r}
+# create vector with value
+x <-c (2,0,0,4)
+# index first value of x
+x[1]
+# index all value exclude the 1st element of x
+x[-1]
+# reassign value by indexing
+x[1] <- 3; x
+# reassign all value exclude the 1st element of x
+x[-1] = 5; x
+```
+### TRUE OR FALSE
+```{r}
+# create vector with value
+y <-c (1,9,9,9) ; y
+
+# check true or false
+y < 9
+
+# reassign value to check true or false
+y[4] =1; y; y < 9
+
+# Edits elements marked as TRUE in index
+y[y<9] = 2; y
+```
+## Data Frames 
+### Data Input 
+```
+read.table (file, header = FALSE, sep = "", quote = "\"'",
+           dec = ".", numerals = c("allow.loss", "warn.loss", "no.loss"),
+           row.names, col.names, as.is = !stringsAsFactors,
+           na.strings = "NA", colClasses = NA, nrows = -1,
+           skip = 0, check.names = TRUE, fill = !blank.lines.skip,
+           strip.white = FALSE, blank.lines.skip = TRUE,
+           comment.char = "#",
+           allowEscapes = FALSE, flush = FALSE,
+           stringsAsFactors = default.stringsAsFactors(),
+           fileEncoding = "", encoding = "unknown", text, skipNul = FALSE)
+           
+read.csv (file, header = TRUE, sep = ",", quote = "\"",
+         dec = ".", fill = TRUE, comment.char = "", …)
+
+read.csv2 (file, header = TRUE, sep = ";", quote = "\"",
+          dec = ",", fill = TRUE, comment.char = "", …)
+
+read.delim (file, header = TRUE, sep = "\t", quote = "\"",
+           dec = ".", fill = TRUE, comment.char = "", …)
+
+read.delim2 (file, header = TRUE, sep = "\t", quote = "\"",
+            dec = ",", fill = TRUE, comment.char = "", …)
+```
+### Create from scratch `data.frame()`
+```{r}
+# template 1
+df <- data.frame (Name =c('Jon','Bill','Maria','Ben','Tina'), 
+                  Age =c(23, 41, 32, 58, 26)
+                  )
+print(df)
+```
+```{r}
+# template 2
+Name <- c('Jon','Bill','Maria','Ben','Tina')
+Age <- c(23, 41, 32, 58, 26)
+
+df <- data.frame(Name, Age)
+
+print (df)
+```
+
+
+```{r}
+# df['<column_name>'] to retrieve column 
+df['Name']
+```
+
+```{r}
+# df$<column_name> to retrieve column 
+df$Name
+```
+```{r}
+# df[row,column] to retrieve column 
+df[,2]
+df[,-2]
+```
+
+## Control Statements 
+
+* `if … else …` 
+* `for` loops
+* `repeat` loops
+* `while` loops
+* `next`, `break` statements
+
+### `if` 
+```{r}
+x <- 5
+if (x > 0) 
+  {
+  print('Positive number')
+  }
+```
+### `if … else …` 
+```
+if (test_expression) 
+  {
+  statement1
+  } else 
+  {
+  statement2
+  }
+```
+```{r}
+x <- -5
+if (x > 0) 
+  {
+  print('Positive number')
+  } else 
+  {
+  print('Negatitve number')
+  }
+```
+
+### `for` Loop
+
+```{r}
+# sample 1 Loop Through Vector in R (Basics)
+for(i in 1:10) {
+  x1 <- i^2       
+  print(x1)        
+}
+```
+```{r}
+# sample 2 Looping Over Character Vectors
+x <- c("Max", "Tina", "Lindsey", "Anton", "Sharon")      
+for(i in x) {                            
+  print(paste("The name", i, "consists of", nchar(i), "characters."))
+}
+```
+```{r}
+# sample 3 Store for-Loop Results in Vector by Appending
+x <- numeric()      
+for(i in 1:10) {                                         
+  x <- c(x, i^2) 
+}
+print(x) 
+```
+
+```{r}
+# sample 4 Nested for-Loop in R
+x <- character()      
+for(i in 1:5) {                                     
+  for(j in 1:3) {                                         
+    x <- c(x, paste(LETTERS[i], letters[j], sep = "_"))  
+  }
+} 
+x
+```
+```{r}
+# sample 5: Break for-Loop Based on Logical Condition
+for(i in 1:10) {                          
+  x <- i^2                                                
+  print(x)                                               
+  if(i >= 5) {                                             
+    break                                                  
+  }
+}
+```
+```{r}
+# sample 6: Continue to Next Iteration of for-Loop
+for(i in 1:10) {
+  if(i %in% c(1, 5, 7)) { # Conditionally skip iteration
+    next                                                  
+  }
+  x <- i^2                                             
+  print(x)                                            
+}
+```
+```{r}
+# sample 7: for-Loop Over Data Frame Columns
+data(iris) # Loading iris flower data set
+#head(iris) # Inspecting iris flower data set
+df <- iris 
+
+for(i in 1:ncol(df)) {  
+  if(grepl("Width", colnames(df)[i])) {  # Logical condition
+    df[ , i] <- df[ , i] + 1000       
+  }
+}
+head(df) 
+```
+```{r}
+# sample 8: for-Loop Through List Object
+my_list <- list(1:5, letters[3:1],"XXX")
+for(i in 1:length(my_list)) {  
+  my_list[[i]] <- rep(my_list[[i]], 3)
+}
+my_list
+```
+
+### `while` Loop
+A while loop in R programming is a function designed to execute some code until a condition is met. 
+Take care! While loops may never stop if the logic condition is always TRUE.
+```
+while (logic_condition) {
+    # Code
+}
+```
+```{r}
+# Variable initialization
+n <- 0
+square <- 0
+
+# While loop
+while(square <= 4000) {
+    n <- n + 1
+    square <- n ^ 2
+}
+
+# Results
+n     
+square
+```
+```{r}
+# Variable initialization
+x <- c(1, 2, 3, 4)
+y <- c(0, 0, 5, 1)
+n <- length(x)
+i <- 0
+z <- numeric(n)
+
+x
+y
+n
+i
+z
+
+# While loop
+while (i <= n) {
+    z[i] <- x[i] + y[i]
+    i <- i + 1
+}
+
+z
+```
+
+## Functions in R
+* Online Help
+* Random Generation
+* Input / Output
+* Data Summaries
+* Exiting R
+
+### Defining Functions
+```{r}
+# Defining Functions 
+square <- function(x = 10) x * x
+
+# Results
+square()
+square(2)
+square(3)
+```
+
+### Random Generation
+```{r}
+runif(n, min = 1, max = 1)
+rbinom(n, size=10, prob=0.5)
+rnorm(n, mean = 0, sd = 1)
+rexp(n, rate = 1)
+rt(n, df = 20)
+```
+
+## Basic Utility Functions
+* `length()` returns the number of elements
+* `mean()` returns the sample mean
+* `median()` returns the sample mean
+* `range()` returns the largest and smallest values
+* `unique()` removes duplicate elements
+* `summary()` calculates descriptive statistics
+* `diff()` takes difference between consecutive elements
+* `rev()` reverses elements
