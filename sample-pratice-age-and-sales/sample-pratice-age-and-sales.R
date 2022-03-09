@@ -1,9 +1,12 @@
+################################################
+#########  Statistics Pratice 
+################################################
+
 # create a variable 
 scores = c(75, 80, 85)
 
 # Do statistics
 scores * 2
-
 mean(scores)     # mean()
 median(scores)   # median()
 sd(scores)       # sd()
@@ -36,32 +39,27 @@ var(df[,2]) # run help("var") for explaination
 sd(df[,2])
 
 ################################################
-#########  Display Data 
+#########  Display Data in Data Frame 
 ################################################
 
-# Adding a linear regression to explore the relationship between Ages and IPLSals
-plot(df$Ages ~ df$IPLSals, main = "Cricket$")
+# Predict Age
+plot(df$Ages ~ df$IPLSals, main = "Cricket$")    # Add a plot    
 abline(lm(df$Ages ~ df$IPLSals), col = "red")    # add a line on Plot
 
-# check linear model for Ages and IPLSals
-fit = lm(df$Ages ~ df$IPLSals)  # Ages:响应变量 , IPLSals:预测变量
+fit = lm(df$Ages ~ df$IPLSals)                   # lm() Function to Fit Linear Models
 fit
 
-# Predict age
-fit = lm(df$IPLSals ~ df$Ages)
-fit
+# Predict Salary
+fplot(df$IPLSals ~ df$Ages, main = "Cricket$")
+abline(lm(df$IPLSals ~ df$Ages), col="red")
 
-# What is the equation? What is the estimated salary for a 20 year old?
-plot(df$IPLSals ~ df$Ages, main = "Cricket$")
-abline
+fit2 = lm(df$IPLSals ~ df$Ages)                   # lm() Function to Fit Linear Models 
+fit2
 
-# explore other plot 
+# explore other plots 
 sorted = sort(Ages)
 plot(Ages, IPLSals, xlab = "Ages", col = "red" ) 
-par(new=TRUE)
-
 plot(sorted, IPLSals, xlab = "Ages", col = "green" )
-
 plot(Ages, IPLSals, col = "blue" )
 points(sorted, IPLSals, col = "red" )                 # add points to a plot
 
