@@ -30,13 +30,6 @@ var(sample(1:10, 1000, replace=T))
 #########  run if ()
 ################################################
 
-# Problem: Suppose there are twelve multiple choice questions in an English class quiz. 
-# Each question has five possible answers, and only one of them is correct. 
-# Find the probability of having four or less correct answers 
-# if a student attempts to answer every question at random.
-
-
-
 # Generate a random number between 5.0 and 7.5
 runif(1, 5.0, 7.5) 
 runif(100, 5.0, 7.5)
